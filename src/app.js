@@ -1,8 +1,8 @@
 import "bootstrap";
 import "./style.css";
 
-const palos = ["corazon", "diamante", "pica", "trebol"];
-const valores = [
+const PALOS = ["♥", "♦", "♣", "♠"];
+const VALORES = [
   "A",
   "2",
   "3",
@@ -17,10 +17,10 @@ const valores = [
   "Q",
   "K"
 ];
+
 let paloArriba = document.querySelector("#simboloArriba");
 let numero = document.querySelector("#numero");
 let paloAbajo = document.querySelector("#simboloAbajo");
-
 let cardWidthInput = document.querySelector("#cardWidth");
 let cardHeightInput = document.querySelector("#cardHeight");
 
@@ -30,8 +30,9 @@ function eleccionCarta(arreglo1, arreglo2) {
   carta.push(arreglo2[Math.floor(Math.random() * arreglo2.length)]);
   return carta;
 }
+
 function asignarColor(arreglo) {
-  if (arreglo[0] === "corazon" || arreglo[0] === "diamante") {
+  if (arreglo[0] === "♥" || arreglo[0] === "♦") {
     paloArriba.style.color = "red";
     numero.style.color = "red";
     paloAbajo.style.color = "red";
@@ -41,27 +42,18 @@ function asignarColor(arreglo) {
     paloAbajo.style.color = "black";
   }
 }
+
 function asignarPalo(arreglo) {
-  if (arreglo[0] === "corazon") {
-    paloArriba.innerHTML = "♥";
-    paloAbajo.innerHTML = "♥";
-  } else if (arreglo[0] === "diamante") {
-    paloArriba.innerHTML = "♦";
-    paloAbajo.innerHTML = "♦";
-  } else if (arreglo[0] === "trebol") {
-    paloArriba.innerHTML = "♣";
-    paloAbajo.innerHTML = "♣";
-  } else {
-    paloArriba.innerHTML = "♠";
-    paloAbajo.innerHTML = "♠";
-  }
+  paloArriba.innerHTML = arreglo[0];
+  paloAbajo.innerHTML = arreglo[0];
 }
+
 function asignarValor(arreglo) {
   numero.innerHTML = arreglo[1];
 }
 
 function generacionCarta() {
-  let carta = eleccionCarta(palos, valores);
+  let carta = eleccionCarta(PALOS, VALORES);
   asignarColor(carta);
   asignarPalo(carta);
   asignarValor(carta);
@@ -80,4 +72,4 @@ window.onload = function() {
 
 document.querySelector(".boton").addEventListener("click", generacionCarta);
 
-setInterval(generacionCarta, 10000);
+setTimeout(generacionCarta, 10000);
