@@ -1,7 +1,7 @@
 import "bootstrap";
 import "./style.css";
 
-const PALOS = ["corazon", "diamante", "pica", "trebol"];
+const PALOS = ["♥", "♦", "♣", "♠"];
 const VALORES = [
   "A",
   "2",
@@ -32,7 +32,7 @@ function eleccionCarta(arreglo1, arreglo2) {
 }
 
 function asignarColor(arreglo) {
-  if (arreglo[0] === "corazon" || arreglo[0] === "diamante") {
+  if (arreglo[0] === "♥" || arreglo[0] === "♦") {
     paloArriba.style.color = "red";
     numero.style.color = "red";
     paloAbajo.style.color = "red";
@@ -44,19 +44,8 @@ function asignarColor(arreglo) {
 }
 
 function asignarPalo(arreglo) {
-  if (arreglo[0] === "corazon") {
-    paloArriba.innerHTML = "♥";
-    paloAbajo.innerHTML = "♥";
-  } else if (arreglo[0] === "diamante") {
-    paloArriba.innerHTML = "♦";
-    paloAbajo.innerHTML = "♦";
-  } else if (arreglo[0] === "trebol") {
-    paloArriba.innerHTML = "♣";
-    paloAbajo.innerHTML = "♣";
-  } else {
-    paloArriba.innerHTML = "♠";
-    paloAbajo.innerHTML = "♠";
-  }
+  paloArriba.innerHTML = arreglo[0];
+  paloAbajo.innerHTML = arreglo[0];
 }
 
 function asignarValor(arreglo) {
